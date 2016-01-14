@@ -95,6 +95,9 @@ class Plugin(object):
         :param str metric_name: The name of the metric
         :param str units: The unit type
         :param int value: The value to add
+        :param int min_value: The minimum value
+        :param int max_value: The maximum value
+        :param int count: The number of items the value is for
         :param float value: The sum of squares for the values
 
         """
@@ -180,7 +183,7 @@ class Plugin(object):
         """
         if not value:
             value = 0
-            
+
         if isinstance(value, basestring):
             value = 0
 

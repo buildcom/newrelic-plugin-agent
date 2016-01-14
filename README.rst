@@ -19,6 +19,7 @@ NewRelic platform. Currently supported backend systems are:
 - Redis
 - Riak
 - uWSGI
+- Zookeeper
 
 Base Requirements
 -----------------
@@ -254,8 +255,12 @@ UWSGI Installation Notes
 ------------------------
 The UWSGI plugin can communicate either over UNIX domain sockets using the path configuration variable or TCP/IP using the host and port variables. Do not include both.
 
-Make sure you have `enabled stats server 
+Make sure you have `enabled stats server
 <http://uwsgi-docs.readthedocs.org/en/latest/StatsServer.html>`_ in your uwsgi config.
+
+Zookeeper Installation Notes
+----------------------------
+The Zookeeper plugin communicates over a TCP connection. The Zookeeper configuration section allows for multiple zookeeper servers. The syntax to poll multiple servers is in the example below.
 
 Configuration Example
 ---------------------
@@ -406,6 +411,14 @@ Configuration Example
           host: localhost
           port: 8098
           #verify_ssl_cert: true
+
+      zookeeper:
+        - name: localhost
+          host: localhost
+          port: 2181
+        - name: hostname
+          host: hostname
+          port: 2181
 
     Daemon:
       user: newrelic
